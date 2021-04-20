@@ -15,6 +15,7 @@ function flipItAndReverseIt(a){
 }
 
 console.log(flipItAndReverseIt("Colton Wright"))
+
 //7. Write a function findLongestWord that takes an array of words and returns the length of the longest one.
 string = ["bear", "twenty-two", "Mission to Mars"]
 function findLongestWord(string){
@@ -28,6 +29,7 @@ function findLongestWord(string){
     return string[string.length-1]+ " "+ string[string.length -1].length
 }
 console.log(string)
+
 //8. Write a function filterLongWords that takes an array of words and a number i and returns the array of words that are longer than i characters long.
 let words = ["apple", "orange", "banana", "Pineapple", "Mango"]
 function filterLongWords(x, y){
@@ -47,3 +49,19 @@ console.log(words, 6)
 //Write a function that takes a string as argument and returns an object where:
 //-the keys are the characters that occur in the string
 //-the values are the number of occurrences for each letter, regardless of the case
+
+const sumMe = {
+    hello: 'there',
+    you: 8,
+    are: 7,
+    almost: '10',
+    done: '!'
+  };
+  let total = 0;
+  // ADD CODE HERE
+  for (let property in sumMe){
+    if (sumMe[property] > 0){
+      total += sumMe[property]
+    }
+  }
+  console.log(total)
