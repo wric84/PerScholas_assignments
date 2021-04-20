@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Per Scholas Class</title>
+</head>
+
+<body>
+    <h1 id="school"></h1>
+    <p id="p1"></p>
+    <br>
+    <p id="p2"></p>
+    <p id="p3"></p>
+    <p id='p4'></p>
+
+    <script>
+        var text = "<ul>"
+        const Class = "<li>" + "Per Scholas" + "</li>";
+        let idMap = new Map();
+        let idnum = 0
+        document.getElementById('school').innerHTML = Class;
+        let studentMap = new Map();
+
+        class Student {
+            constructor(fname, lname, address, phone) {
+                this.fname = fname;
+                this.lname = lname;
+                this.address = address;
+                this.phone = phone;
+                this.id = ++idnum; 
+                idMap.set(idnum, fname);
+            }
+            getFullName() {
+                let fullName = this.fname + " " + this.lname;
+                this.fullName = fullName;
+            }
+            displayStudent() {
+                text = text + "<li>" + this.id + " " + this.fullName + "</li>"
+                return text
+            }
+            displayStudents(){
+                text = text + idMap.get(idnum)
+                //document.getElementById('p2').innerHTML=idMap()
+                return text
+
+            }
+            // createStudentEmail(){
+            //     text = text + "<li>" + this.fullName + '@perscholas.com' + "</li>"
+            //     return text
+            // }
+        }
+        const student1 = new Student('John', 'Baptiste', '111 St', 'N/A');
+        student1.getFullName();
+        student1.displayStudent();
+        //student1.createStudentEmail();
+        //student1.displayStudents();
+
+        const student2 = new Student('Sherlock', 'Holmes', '157 Bleeker St', 'N/A');
+        student2.getFullName();
+        student2.displayStudent();
+
+        const student3 = new Student('Bruce', 'Banner', 'Avengers Tower', 'unknown');
+        student3.getFullName();
+        student3.displayStudent();
+
+        text = text + "</ul>";
+        document.getElementById('p1').innerHTML = text
+        document.getElementById('p2').innerHTML=idMap.size
+        document.getElementById('p3').innerHTML=array.from(idMap).toString()
+        document.getElementById('p4').innerHTML=idMap.values()
+        //console.log(String(idMap.values())
+
+
+    
+
+        
+    </script>
+
+
+</body>
+
+</html>

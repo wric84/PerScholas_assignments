@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../JSbasic/arrowFunc.js"></script>
+</head>
+<body>
+    <p id="func"></p>
+    <p id="func2"></p>
+<script>
+    setTimeout(myfun, 3000);
+    function myfun(){
+        document.getElementById("func").innerHTML="8 squared =" +(8*8); 
+    }
+    setTimeout((myfunc2) =>{
+        document.getElementById("func2").innerHTML="Oops! I meant" +(8**8);
+    },6000)
+</script>
+</body>
+</html>

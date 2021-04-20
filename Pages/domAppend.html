@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='div'>
+        <p id ='question'>
+            <input type="text" placeholder="Write Here"><br>
+            <button id="press" type="submit">Reply</button>
+        </p>
+    </div>
+    <script>
+        //let txt="";
+        let myDiv = document.getElementById('div');
+        let para = document.createElement('p');
+        myDiv.append(para);
+        let node = document.createTextNode('A new Paragraph');
+        para.append(node);
+        let strong = document.createElement('Strong');
+        node = document.createTextNode('A strong text');
+        strong.appendChild(node);
+        //mydiv.append(para, strong, 'This is a reg text');
+
+        let myPara2 = document.getElementById('p');
+        let nodeB = document.createTextNode('Favorite thing you would get in your school lunch')
+        myDiv.append(para2);
+        //myPara2.innerText='Favorite thing you would get in your school lunch';
+        let myButton = document.getElementById('press')
+        let nodeB = document.createTextNode('Fruit gushers? Fruit by the foot?')
+        myButton.appendChild(nodeB);
+       
+
+    </script>
+</body>
+</html>

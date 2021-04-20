@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../JSbasic/quickCallback.js" defer></script>
+    <style>
+        #button,
+        #button1{
+            border-radius:  5px;
+            background: rgb(248, 129, 43);
+            color: white;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>Today's lesson is brought to you in part by: </h1>
+    
+    <img src="https://www.throwbacks.com/content/images/2017/08/latest-cb-20140530024152.jpg" alt="LeVar Burton">
+        
+    <hr>
+    <p id='p'>Do you want to build a snowman?</p>
+    <button id='button'> Who's a radiant ball of sunshine</button>
+    <hr>
+    <button id='button1' onclick="this.innerHTML='OUCH!'"> Please don't click </button>
+    <hr>
+    Coolest videogame growing up? <input type='text' id='inputName'>
+
+    <script>
+
+        document.getElementById('button').addEventListener('click', function(){
+            document.getElementById('p').innerHTML="You Are!";
+        });
+
+        document.getElementById('inputName').addEventListener('change', myFunction);
+        document.getElementById('inputName').setAttribute('size', 30);
+
+        function myFunction () {
+            var x = document.getElementById('inputName');
+            x.value = x.value.innerHTML='Yeah - I guess that one was alright...'
+        }
+
+        document.getElementById('p').addEventListener('mouseover', mouseOver);
+        document.getElementById('p').addEventListener('mouseout', mouseOut);
+
+        function mouseOver(){
+            document.getElementById('p').style.fontWeight='bolder';
+            document.getElementById('p').style.fontStretch='ultra-expanded';
+            document.getElementById('p').style.backgroundColor = 'black';
+            document.getElementById('p').style.color = 'red';
+            document.getElementById('p').style.width='300px';
+            document.getElementById('p').style.fontFamily='arial', 'serif';
+        }
+        function mouseOut(){
+            document.getElementById('p').style.color = 'black';
+            document.getElementById('p').style.fontWeight = 'normal';
+            document.getElementById('p').style.fontStretch='normal';
+            document.getElementById('p').style.fontFamily='normal'
+            document.getElementById('p').style.backgroundColor = 'white';
+        }
+
+    </script>
+</body>
+</html>

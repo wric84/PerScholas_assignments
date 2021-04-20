@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="Homework"></h1>
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+    <p id='p4'></p>
+    <script>
+        let text = '<ul>';
+        let pie = 3.14
+        const Class = "<p1>" + "Finding Shapes area, sides and circumference" + "</p1>"
+        document.getElementById("Homework").innerHTML=Class;
+
+        class Circle{
+            constructor(radius){
+                this.radius = radius
+
+            }
+            calculateArea(){
+                text = text + "<p1>" + "The area of a circle is " + (this.radius**2)*pie + "</p1><br>";
+            }
+            calculateCircumference(){
+                text = text + "<p1>" + "The circumference of a circle is " + (2*pie*this.radius) + "</p1><br>"
+            }
+        }
+        class Rectangle{
+            constructor(length, width){
+                this.length = length;
+                this.width = width;
+            }
+            calculateAreaRectangle(){
+                text = text + "<p1>" + "The number of sides is " + (this.width*this.length) + "</p1><br>";
+            }
+            total_sides(side1 =1,side2 =1, side3 = 1, side4 =1){
+                let numberofSides = side1 +side2+ side3+ side4
+                this.numberofSides = numberofSides
+                text = text + "<p1>" + "The number of sides is " + (this.numberofSides) + "</p1><br>"
+            }
+        }
+        class Square{
+            constructor(width){
+                this.width = width;
+            }
+            calculateAreaSquare(){
+                text = text + "<p1>" + "The area of a square " + (this.width*this.width) + "</p1><br>";
+            }
+            total_sides(side1 =1,side2 =1, side3 = 1, side4 =1){
+                let numberofSides = side1 +side2+ side3+ side4
+                this.numberofSides = numberofSides
+                text = text + "<p1>" + "The number of sides is " + (this.numberofSides) + "</p1><br>"
+            }
+        }
+
+        
+        const circle1 = new Circle(24);
+        circle1.calculateArea();
+        circle1.calculateCircumference();
+
+        const rectangle1 = new Rectangle(10, 3);
+        rectangle1.calculateAreaRectangle();
+        rectangle1.total_sides();
+
+        const square1 = new Square(10);
+        square1.calculateAreaSquare();
+        square1.total_sides();
+
+        text = text + "</ul>"
+        document.getElementById('p2').innerHTML=text
+
+    </script>
+</body>
+</html>
