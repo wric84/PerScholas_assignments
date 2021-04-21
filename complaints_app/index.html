@@ -1,13 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="../complaints_app/app.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    
+
+  <script src="app.js"></script>
+
+  <!-- <script src='https://code.jquery.com/jquery-3.4.1.min.js' type='text/javascript'></script> -->
+
+
+    <!-- <div>
+    <map name="bk" >
+        <img src="boroughs.png" alt="Workplace" usemap="#bk" width="400" height="379"  </img>
+        <area shape="poly" coords="34, 44,40,70,47,30" href="boroughs.png" ></area>
+    </map>
+</div> -->
+
+  <button id='manhattan' display="flex" onclick="getData()">MANHATTAN</button>
+  <button id='brooklyn' display="flex" onclick="getData()">BROOKLYN</button>
+  <button id='bronx' display="flex" onclick="getData()">BRONX</button>
+  <button id='queens' display="flex" onclick="getData()">QUEENS</button>
+  <button id='statenIsland' display="flex" onclick="getData()">STATEN ISLAND</button>
+  <label  for="limit" style="margin-left:5px; background-color:white;">results per page: </label> <input value=10 id="limit" type="number"></input>
+  <div id="container">
+
+  </div>
+  <div id="back">
+  </div>
+
+  <!-- <span>
+        <img src="boroughs.png" alt="Workplace" width="400" height="379" </img>
+        <svg> -->
+
+  <!-- <polygon points="5,0,0 ,30,10,30,2"
+                style="fill:rgb(143, 185, 143);stroke:purple;stroke-width:1" />
+        </svg> -->
+  <!-- </span> -->
+
 </body>
+
 </html>

@@ -1,36 +1,107 @@
-/*1. Create Directory named complaints_app
-    -Inside create app.js, index.html, styles.css
-    -link them as well as jQuery CDN library
+// let getMan = async () => {
+//     let response = await $.ajax (
+// }$.ajax({
+//     url: "https://data.cityofnewyork.us/resource/erm2-nwe9.json",
+//     type: "GET",
+//     data: {
+//       "$limit" : 5000,
+//       "$$app_token" : "YOURAPPTOKENHERE"
+//     }
+// }).done(function(data) {
+//   alert("Retrieved " + data.length + " records from the dataset!");
+//   console.log(data);
+// });
 
-2. The app:
-    -search 311 call Data (look at link in assignment)
-    -display all complaints, filtered by borough
-    -check how police respond 
-3.The data:
-    -convert data from NYC open Data(provided through link on assignment) and format to JSON
+function getData() {
+    let limit = document.getElementById("limit").value
+    var borough = event.target.innerHTML.toUpperCase()
+    fetch("https://data.cityofnewyork.us/resource/erm2-nwe9.json?agency=NYPD&borough=" + borough + "&$limit=" + limit)
+        .then((dataset) => dataset.json())
+        .then((jData) => displayData(jData)) //run displaydata function
 
-4. When collapsed:
-    -closeapi.png
-    -When opened to see all the key value pairs: 
-    -openapi.png 
-    -Only collect key/values of interest:
-        -borough
-        -descriptor (which says what kind of complaint was made)
-        -agency: "NYPD" (because we only want complaints that were handled by the police department)
-        -resolution_description (which says how the police handled the complaint)
 
-5. Working with an API
-    -five buttons for the five boroughs when the page loads
-    -input box where you see how many complaints for borough listed
-        (When the user clicks on one of the five buttons, a list of complaints should be displayed on the page, according 
-        to the number they input AND the borough they clicked on)
-    -If the user doesn't input any number, make the default be 10
-    -filter so only complaints that were handled by the NYPD! 
-        (hint: consider filtering for a specific "agency" when making the API call)
-    -When the list of complaints is shown, each complaint should also have a button on it that reads something along the 
-    lines of "toggle police response"
-    -When the user clicks on on the "toggle police response" button, it should then toggle how the police responded to that 
-    particular complaint
-    -Make sure it only toggles the response for that one complaint, not the entire list!
-*/
+}
 
+function displayData(data) {
+    removenodes()
+    let contain = document.getElementById("container") // find container div
+
+
+    // fun fact. you don't need all these elements I just created them because CSS is a mother fucker
+    for (x in data) {
+        let node = document.createElement("div") // create div for first descriptor plus response button
+        let node2 = document.createElement("div") // create div for resolution
+        let p1 = document.createElement("p") //descriptor text
+        let resolution = document.createElement("p") //resolution text
+        let btn = document.createElement("button") // response button
+        let btnclass = document.createAttribute("class") // create class for response button
+        let btnclick = document.createAttribute("onclick")// create onclick for response - onclick is show()
+        let nodeclass = document.createAttribute("class") // create class for descriptor div
+        let p1class = document.createAttribute("class") // create class for descriptor p tag
+        let resclass = document.createAttribute("class") // create class for resolution div
+
+        //set value to attribute nodes
+        btn.innerHTML = "Response" // set button text
+        btnclick.value = "show()" //set onclick to show resolution text
+        btnclass.value = "response"
+        nodeclass.value = "nclass"
+        p1class.value = "p1"
+        resclass.value = "resolutionclass"
+
+        //set attribute nodes to elements
+        btn.setAttributeNode(btnclass)
+        btn.setAttributeNode(btnclick)
+        node.setAttributeNode(nodeclass)
+        node2.setAttributeNode(resclass)
+        p1.setAttributeNode(p1class)
+
+        p1.innerHTML = data[x].descriptor
+        resolution.innerHTML = data[x].resolution_description
+
+        //append attributes to container
+        contain.appendChild(node)
+        contain.appendChild(node2)
+        node.appendChild(p1) // append descriptor p tag to outer first div
+        p1.append(btn) // append response button to descriptor p tag
+        node2.appendChild(resolution) // append resolution p tag to second div
+        resolution.hidden = true // set resolution text to be hidden on load
+        node2.style.backgroundColor = "#b2d3e6";//"rgb(210, 211, 204)"
+
+
+
+    }
+    console.log(data)
+}
+
+//  clear all nodes for new selection
+function removenodes() {
+    let container = document.getElementById("container")
+    let outerdiv = container.getElementsByTagName("div")
+
+
+    for (let i = 0; i < outerdiv.length; i++) {
+        let firstpar = container.getElementsByTagName("p")
+        for (i = 0; i < firstpar.length; i++) {
+            if (firstpar[i].hasChildNodes()) {
+                let btn = firstpar[i].firstChild
+                btn.remove()
+            }
+            firstpar[i].remove()
+        }
+
+        outerdiv[i].remove()
+
+        console.log(outerdiv)
+    }
+}
+
+//  show/hide resolution text
+function show() {
+    x = event.target.parentElement.parentElement.nextSibling.firstChild
+    if (x.hidden == true) {
+        x.hidden = false
+
+    }
+    else x.hidden = true
+    console.log(x)
+}

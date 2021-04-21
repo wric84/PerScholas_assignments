@@ -1,0 +1,159 @@
+    html{
+      font-family: 'Roboto', sans-serif;
+      background-color: ghostwhite;  
+
+    }
+    #back{
+      width: 100vw;
+      height: 800px;
+      background-image: url(../complaints_app/PRDM.png);
+      opacity: .5;
+      position: relative;
+      z-index: 1;
+    }
+    #container {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 40%;
+        margin-top: 20px;
+        margin: 30px;
+        z-index: 2;
+    }
+
+    .response {
+
+        text-align: center;
+
+        width: 120px;
+        height: 40px;
+        background-color: #4390bc;/*rgba(210, 211, 204, 0.5);*/
+        box-shadow: 1px 2px 1px; /*rgb(137, 165, 59);*/
+        border-radius: 8%;
+
+        transition:.4s;
+        border-color .5s,
+         box-shadow .5s,
+         color .01s,
+         transform .5s;
+
+
+    }
+    .response:hover{
+      transform: translateY(-5px);
+      color:ghostwhite;
+    }
+
+
+    button {
+        width: 140px;
+        height: 40px;
+        /*background-color: /*rgba(210, 211, 204, );*/
+        /*box-shadow: 1px 2px 1px rgb(137, 165, 59);*/
+        box-shadow:0px .5em .5em -.4em black;
+        border-radius: 9999px;
+        cursor: pointer;
+        margin-left: 30px;
+        transition:.4s;
+        border-color .5s,
+         box-shadow .5s,
+         font-weight .01s,
+         transform .5s;
+
+    }
+
+    button:hover{
+      transform: translateY(-5px);
+      font-weight:bold;
+
+    }
+    .nclass {
+        display: grid;
+        margin-top: 5px;
+        height: 40px;
+        color:ghostwhite;
+        width: 82%;
+        background-color: rgb(12, 45, 72);/*rgb(208, 220, 169);*/
+        align-content: center;
+        box-shadow: 1px 2px 1px  rgb(12,45,72)/*rgb(137, 165, 59);*/
+
+    }
+
+    .p1 {
+
+        display: grid;
+        grid-template-columns: 1fr 38px;
+        line-height: 2.2;
+        height: 40px;
+
+
+    }
+   .resolutionclass {
+    box-shadow: 1px 2px 1px rgb(12,45,72);/*rgb(137, 165, 59);*/
+            width: 82%;
+        }
+
+
+    p {
+
+        justify-items: last baseline;
+        margin-left: 20px;
+        width: 80%;
+
+    }
+    /* Manhattan Styles*/
+    #manhattan{
+      background-color: #56C6A9 ;
+      /* border-color:inherit; */
+
+    }
+
+    #manhattan:hover{
+      background-color: #006E51;
+
+    }
+
+    /*Brooklyn Styles*/
+
+    #brooklyn{
+      background-color:#EDD59E;
+
+    }
+
+    #brooklyn:hover{
+      background-color:#F5DF4D;
+
+    }
+
+      /*Bronx Styles  */
+    #bronx{
+      background-color:#DA2C43;
+
+    }
+
+    #bronx:hover{
+      background-color:#CD212A;
+
+    }
+      /*Queens Styles*/
+    #queens{
+      background-color:#FFA500;
+
+
+    }
+
+    #queens:hover{
+      background-color:#FF7A00;
+
+    }
+      /*Staten Island Styles*/
+    #statenIsland{
+      background-color:#B76BA3;
+
+
+    }
+
+    #statenIsland:hover{
+      background-color:#9C51B6;
+      font-weight:normal;
+    }
