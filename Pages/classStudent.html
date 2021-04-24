@@ -15,6 +15,9 @@
     <p id="p2"></p>
     <p id="p3"></p>
     <p id='p4'></p>
+    <p id='p5'></p>
+    <p id='p6'></p>
+    <p id='p7'></p>
 
     <script>
         var text = "<ul>"
@@ -23,6 +26,7 @@
         let idnum = 0
         document.getElementById('school').innerHTML = Class;
         let studentMap = new Map();
+        let studentLunchMap = new (Map);
 
         class Student {
             constructor(fname, lname, address, phone) {
@@ -43,7 +47,7 @@
             }
             displayStudents(){
                 text = text + idMap.get(idnum)
-                //document.getElementById('p2').innerHTML=idMap()
+                document.getElementById('p7').innerHTML=idMap()
                 return text
 
             }
@@ -52,6 +56,27 @@
             //     return text
             // }
         }
+        class Lunch extends Student {
+            constructor(fname, lunch){
+                super(fname);
+                this.lunch = lunch
+            }
+            lunchTime(){
+                return this.fname + ' had a ' + this.lunch + ' for lunch!'
+                // text = text + "<li>" + this.id + " " + this.fullName + "</li>"
+                // return text
+
+            }
+            bestLunch(){
+                
+            }
+        }
+        studentLunchMap.set('pbj', 1);
+        studentLunchMap.set('bologna', 0);
+        studentLunchMap.set('grilledChz', 4);
+        studentLunchMap.set('fruitGushers', 3);
+        studentLunchMap.set('fruitByTheFoot', 2);
+
         const student1 = new Student('John', 'Baptiste', '111 St', 'N/A');
         student1.getFullName();
         student1.displayStudent();
@@ -66,11 +91,18 @@
         student3.getFullName();
         student3.displayStudent();
 
+        const studentId1 = idMap.values()
+
         text = text + "</ul>";
         document.getElementById('p1').innerHTML = text
         document.getElementById('p2').innerHTML=idMap.size
-        document.getElementById('p3').innerHTML=array.from(idMap).toString()
-        document.getElementById('p4').innerHTML=idMap.values()
+        //document.getElementById('p6').innerHTML=array.from(idMap).toString()
+        document.getElementById('p7').innerHTML=studentId1
+
+        let studentLunch1 = new Lunch('John','Peanut-Butter & Jelly')
+        document.getElementById('p4').innerHTML=studentLunch1.lunchTime()
+        let studentLunch2 = new Lunch('Bruce', 'Bologna');
+        document.getElementById('p5').innerHTML=studentLunch2.lunchTime()
         //console.log(String(idMap.values())
 
 

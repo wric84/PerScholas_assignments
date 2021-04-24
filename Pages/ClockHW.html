@@ -1,34 +1,35 @@
 <!DOCTYPE html>
-<html>
-<script src="clockHW.js"></script>
-    <style type="text/css">
-
-        .dot {
-          height: 250px;
-          width: 250px;
-          background-color:rgb(4, 95, 4);
-          border-radius: 50%;
-          display: inline-block;
-        }
-        #clock{ 
-          position: relative;
-          top: 95px;d
-          font-size: 50px;
-          background-color: aqua;
-        }
-        </style>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../CSS/clockHW.css">
+  
 </head>
 <body>
-  <div style="text-align:center">
-    <h1>Dumb Clock</h1>
-    <div id="controlos">
-      <input id="txtTempo" type="text" value="0" size="4" maxlength="4">
+  <h1 id="header" style=text-align:center>Clock</h1>
+  <div id="parent1">
+    <div class="time">
+      <h1 id="time"><span id="minutes" onkeypress="return (this.innerText.length <= 1)" contenteditable="true">00</span> :
+        <span id="seconds" onkeypress="return (this.innerText.length <= 1)" contenteditable="true">00</span>
+      </h1>
     </div>
-    <span class="dot">
-      <div id="clock" class="blue" type="submit"><b contenteditable="true">00:00</b></div>
-    </span>
   </div>
-
+  <div class="myInput">
+    <input type="number" id="startSeconds">
+    <button id="btnStart" onclick="totalSeconds + setTime()">Start</button>
+  </div>
+  <div id="back"></div>
+<!--   
+  <div id="clock" class="blue" contenteditable="true">
+    <input id="minutes" type="number" value="10" size="2" maxlength="2"><span>:</span>
+    <input id="seconds" type="number" value="10" size="2" maxlength="2">
+  </div>
+  <button id="btnStart">Start</button> -->
+  <script src="../JSbasic/clockHW.js"></script>
 </body>
 </html>
+
+
