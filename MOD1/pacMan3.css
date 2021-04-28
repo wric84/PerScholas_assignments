@@ -1,0 +1,117 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    /* object-fit:cover; */
+    
+}
+.pacman{
+    width: 32px;
+    height: 32px;
+    background-color: yellow;
+    /* background-image: ; */
+    display: inline-block;
+}
+.pacman2{
+    width: 32px;
+    height: 32px;
+    background-color: chartreuse;
+    /* background-image: ; */
+    display: inline-block;
+}
+.inky {
+    width: 32px;
+    height: 32px;
+    background-color: rgb(247, 144, 162);
+    /* background-image: ; */
+    display: inline-block;
+}
+.blinky {
+    width: 32px;
+    height: 32px;
+    background-color: orange;
+    /* background-image: ; */
+    display: inline-block;
+}
+
+.dot {
+    width: 32px;
+    height: 32px;
+    background-color: skyblue;
+    /* background-image: ; */
+    display: inline-block;
+}
+.wall{
+    width: 32px;
+    height: 32px;
+    background-color: blue;
+    display: inline-block;
+}
+.coin{
+    width: 32px;
+    height: 32px;
+    background-image: url(../MOD1/images/Dot.png);
+    background-size: cover;
+    display: inline-block;
+}
+.ground{
+    width: 32px;
+    height: 32px;
+    background-color: black;
+    display: inline-block;
+}
+div{
+    margin: -1px;
+    vertical-align: top;
+}
+.worlds{
+    grid-row-start:1;
+    grid-row-end: 10;
+}
+#player1{
+    grid-row-start:1;
+    grid-row-end: 2;
+
+}
+#player2{
+    grid-row-start:2;
+    grid-row-end: 3;
+    
+}
+img {
+    width: 100%;
+}
+
+.scoreboard{
+    display:table-column;
+    display:grid;
+    grid-column-start:2;
+    grid-column-end: 3;
+    position:relative;
+    justify-content: space-evenly;
+    background-color:rgba(255, 255, 0, 0.774);
+    border:solid 20px blue;
+    margin: 0;
+}
+body{
+    background-color: #020431;
+}
+#digits {
+    font-size: 40px;
+    color: white;
+    position: relative;
+    /* top: 45%;
+    left: 50%; */
+    /* transform: translate(-50%, -55%); */
+}
+p{
+    color: white;
+    position: relative;
+    align-items: center;
+
+}
+.time{
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
