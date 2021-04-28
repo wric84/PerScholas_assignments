@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../MOD1/pacMan.css">
+    <script src="pacMan.js"></script>
+</head>
+<body>
+    <p id='para1'>Would you like to play a game?</p>  
+    <!-- <input type = "button" onclick = "drawWorld()" value = "Display">   -->
+    <div class="world">
+        <!-- <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <div class="wall"></div>
+        <br>
+        <div class="wall"></div>
+        <div class="pacman"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="ground"></div>
+        <div class="ground"></div>
+        <div class="ground"></div> -->
+    </div>
+    <!-- <p id="para1"></p> -->
+    <button onclick="document.getElementsByClassName('world').innerHTML=drawWorld()" value="Display"></button>
+
+    <script>
+        document.getElementsByClassName("world").innerHTML=drawWorld();
+    </script>
+
+<!-- <script> drawWorld()</script> -->
+</body>
+</html>

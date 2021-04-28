@@ -7,28 +7,32 @@
 .pacman{
     width: 32px;
     height: 32px;
-    background-color: yellow;
+    background-image: url(../MOD1/images/PacManMO.png);
+    background-size: cover;
     /* background-image: ; */
     display: inline-block;
 }
 .pacman2{
     width: 32px;
     height: 32px;
-    background-color: chartreuse;
+    background-image: url(../MOD1/images/PacMan2MO.png);
+    background-size: cover;
     /* background-image: ; */
     display: inline-block;
 }
 .inky {
     width: 32px;
     height: 32px;
-    background-color: rgb(247, 144, 162);
+    background-image: url(../MOD1/images/InkyMO.png);
+    background-size: cover;
     /* background-image: ; */
     display: inline-block;
 }
 .blinky {
     width: 32px;
     height: 32px;
-    background-color: orange;
+    background-image: url(./images/blinkyMO.png);
+    background-size: cover;
     /* background-image: ; */
     display: inline-block;
 }
@@ -36,14 +40,16 @@
 .dot {
     width: 32px;
     height: 32px;
-    background-color: skyblue;
+    background-image: url(./images/dotOM.png);
+    background-size: cover;
     /* background-image: ; */
     display: inline-block;
 }
 .wall{
     width: 32px;
     height: 32px;
-    background-color: blue;
+    background-image: url(../MOD1/images/Brick.png);
+    background-size: cover;
     display: inline-block;
 }
 .coin{
@@ -66,6 +72,8 @@ div{
 .worlds{
     grid-row-start:1;
     grid-row-end: 10;
+    grid-column-start:1;
+    grid-column-end: 2;
 }
 #player1{
     grid-row-start:1;
@@ -86,6 +94,8 @@ img {
     display:grid;
     grid-column-start:2;
     grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
     position:relative;
     justify-content: space-evenly;
     background-color:rgba(255, 255, 0, 0.774);
@@ -94,6 +104,7 @@ img {
 }
 body{
     background-color: #020431;
+    display: grid;
 }
 #digits {
     font-size: 40px;
@@ -103,6 +114,16 @@ body{
     left: 50%; */
     /* transform: translate(-50%, -55%); */
 }
+
+#round{
+    font-size: 40px;
+    color: white;
+    position: relative;
+    /* top: 45%;
+    left: 50%; */
+    /* transform: translate(-50%, -55%); */
+}
+
 p{
     color: white;
     position: relative;
@@ -113,5 +134,59 @@ p{
     position: relative;
     margin-top: 10px;
     margin-bottom: 10px;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
 
+}
+.rounds{
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 1;
+}
+
+a.btn {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    height: 75px;
+    width: 75px;
+    border:solid black;
+    border-radius: 50%;
+    background-color: yellow;
+    text-decoration: none;
+    color:white;
+    font-size: 22px;
+    position: relative;
+}
+.text{
+    margin-top: 50px;
+    padding-top: 30px;
+    position: absolute;
+}
+h1 {
+    color: white;
+    width: 100%;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+nav {
+    position: relative;
+    width: 300px;
+    justify-content: space-between;
+    display:flex;
+    left: 60px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+}
+#homeScreen{
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: 5;
 }
