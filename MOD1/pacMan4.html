@@ -308,7 +308,7 @@
 
         const timer = document.getElementById('digits');
 
-        let sec = 10;
+        let sec = 60;
         let stoptime = true;
 
         function startTimer() {
@@ -336,7 +336,7 @@
                     //round.innerHTML = round;
                     counter1 +=1;
                     p1Counter.innerHTML = counter1;
-                    sec = 10;   
+                    sec = 60;   
                     //drawWorld1();
                     if (map != map1){
                         console.log(map)
@@ -365,7 +365,7 @@
                 else if(sec == '00' && p2Score > p1Score){
                     counter2 +=1;
                     p2Counter.innerHTML = counter2;
-                    sec = 10;  
+                    sec = 60;  
                 }
                 digits.innerHTML = sec;
                 console.log(sec)
