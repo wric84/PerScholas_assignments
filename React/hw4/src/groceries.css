@@ -1,0 +1,41 @@
+body{
+  background-color: rgb(211, 230, 211);
+}
+h2{
+  background: khaki;
+  margin: auto;
+  text-align: center;
+  width: 60%;
+}
+form{
+  margin: auto;
+  text-align: center;
+  margin: 1rem;
+}
+button{
+  margin-left: 2rem;
+  float: right;
+  border-radius: 9999px;
+  background-color: whitesmoke;
+}
+label{
+  font-size: large;
+  font-weight: bold;
+}
+.divider{
+  width:20px;
+  height:20px;
+  display:inline-block;
+}
+.Purchase{
+  background: rgb(204, 120, 120);
+  margin: auto;
+  text-align: center;
+  height: 120px;
+  width: 180px;
+  border-radius: 9999px;
+  margin: 1rem;
+  font-size: x-large;
+  color: white;
+  font-weight: bolder;
+}
