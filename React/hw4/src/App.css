@@ -1,0 +1,90 @@
+body{
+    background-color:rgb(20, 91, 133);
+    font-family:Arial, Helvetica, sans-serif
+}
+
+h1{
+    color: goldenrod;
+    font-weight: bolder;
+}
+h2{
+    color: goldenrod;
+    float: left;
+    font-weight: bolder;
+}
+p{
+    color: whitesmoke;
+    text-align: 'center';
+    float: right;
+    margin-top: 1.7rem;
+    font-weight: bolder;
+}
+.redbtn{
+    background-color: red;
+    border: 0;
+    margin-left: .5rem;
+    justify-content: center;
+    height: 50px;
+    font-weight: bolder;
+    width: 100px;
+    border-radius: 9999px;
+}
+.bluebtn{
+    background-color:rgb(67, 67, 201);
+    border: 0;
+    margin-left: .5rem;
+    justify-content: center;
+    height: 50px;
+    font-weight: bolder;
+    width: 100px;
+    border-radius: 9999px;
+}
+.pinkbtn{
+    background-color:rgb(248, 172, 185);
+    border: 0;
+    margin-left: .5rem;
+    justify-content: center;
+    height: 50px;
+    font-weight: bolder;
+    width: 100px;
+    border-radius: 9999px;
+}
+.randombtn{
+    background-color: rgb(243, 243, 105);
+    border: 0;
+    color: rgb(20, 91, 133);
+    margin-left: .5rem;
+    justify-content: center;
+    height: 50px;
+    font-weight: bolder;
+    width: 175px;
+    border-radius: 9999px;
+}
+.revealbtn{
+    background-color: rgba(31, 30, 102, 0.801);
+    border: 0;
+    color: whitesmoke;
+    margin-left: .5rem;
+    justify-content: center;
+    height: 50px;
+    font-weight: bolder;
+    width: 400px;
+    border-radius: 9999px;
+}
+.box {
+    display: flex;
+    justify-content:center;
+}
+
+.ScoreName {
+}
+.ScoreValue {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.title{
+    font-size: 40px;
+    color: whitesmoke;
+    text-align: center;
+    font-weight: bolder;
+}
