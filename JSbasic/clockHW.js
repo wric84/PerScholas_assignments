@@ -18,7 +18,7 @@ startSeconds.addEventListener('input', () =>{
 button.addEventListener('click', ()=>{
   setInterval(setTime, 1000);
   function setTime(){
-    ++totalSeconds + totalSeconds;
+    ++totalSeconds;
     seconds.innerHTML = pad(totalSeconds % 60);
     minutes.innerHTML = pad(parseInt(totalSeconds/60));
   }

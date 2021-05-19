@@ -2,20 +2,45 @@
     display: grid;
     grid-template-columns: 4fr 1fr;
     /* object-fit:cover; */
-    
 }
+
 .pacman{
     width: 32px;
     height: 32px;
-    background-image: url(../MOD1/images/PacManMO.png);
+    background-image: url(./images/PacManMO.png);
     background-size: cover;
     /* background-image: ; */
     display: inline-block;
+    animation: panManAni 1s 1s infinite;
 }
+/* 
+.pacman::after{
+    display: inline-block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(./images/PacMan2MC.png);
+    background-repeat: repeat;
+    background-position: 50% 0;
+    background-size: cover;
+    animation: pacmanAni 1s 1s infinite;
+  }
+  
+  @keyframes pacManAni {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+  } */
+/* @keyframes pacManAni {
+    0% { transform: rotate(90deg); }
+    50% { transform: rotate(0deg); }
+    100% { transform: rotate(90deg); }
+} */
 .pacman2{
     width: 32px;
     height: 32px;
-    background-image: url(../MOD1/images/PacMan2MO.png);
+    background-image: url(./images/PacMan2MO.png);
     background-size: cover;
     /* background-image: ; */
     display: inline-block;
@@ -23,7 +48,7 @@
 .inky {
     width: 32px;
     height: 32px;
-    background-image: url(../MOD1/images/InkyMO.png);
+    background-image: url(./images/InkyMO.png);
     background-size: cover;
     /* background-image: ; */
     display: inline-block;
@@ -48,14 +73,14 @@
 .wall{
     width: 32px;
     height: 32px;
-    background-image: url(../MOD1/images/Brick.png);
+    background-image: url(./images/Brick.png);
     background-size: cover;
     display: inline-block;
 }
 .coin{
     width: 32px;
     height: 32px;
-    background-image: url(../MOD1/images/Dot.png);
+    background-image: url(./images/Dot.png);
     background-size: cover;
     display: inline-block;
 }
@@ -71,9 +96,9 @@ div{
 }
 .worlds{
     grid-row-start:1;
-    grid-row-end: 10;
-    grid-column-start:1;
-    grid-column-end: 2;
+    grid-row-end: 2;
+    /* grid-column-start:1;
+    grid-column-end: 1; */
 }
 #player1{
     grid-row-start:1;
@@ -82,7 +107,7 @@ div{
 }
 #player2{
     grid-row-start:2;
-    grid-row-end: 3;
+    grid-row-end: 2;
     
 }
 img {
@@ -92,10 +117,10 @@ img {
 .scoreboard{
     display:table-column;
     display:grid;
-    grid-column-start:2;
-    grid-column-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 2;
     grid-row-start: 2;
-    grid-row-end: 3;
+    grid-row-end: 2;
     position:relative;
     justify-content: space-evenly;
     background-color:rgba(255, 255, 0, 0.774);
@@ -110,6 +135,7 @@ body{
     font-size: 40px;
     color: white;
     position: relative;
+    top: 10px;
     /* top: 45%;
     left: 50%; */
     /* transform: translate(-50%, -55%); */
@@ -143,8 +169,8 @@ p{
     position: relative;
     margin-top: 10px;
     margin-bottom: 10px;
-    grid-column-start: 3;
-    grid-column-end: 3;
+    /* grid-column-start: 3;
+    grid-column-end: 3; */
     grid-row-start: 1;
 }
 

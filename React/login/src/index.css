@@ -1,0 +1,43 @@
+ul li:nth-child(3) {
+    border: 1px solid black;
+    width: 80px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+}
+
+.content {
+    background-color: rgb(197, 197, 194);
+    display: flex;
+    flex-direction: column;
+}
+
+.content div {
+    display: flex;
+    justify-content: center;
+}
+
+.content h3 {
+    text-align: center;
+}
+
+.lists {
+    display: flex;
+    flex-direction: column;
+}
+
+.lists div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form {
+    border: 1px solid black;
+    background-color: cadetblue;
+    width: 100%;
+}

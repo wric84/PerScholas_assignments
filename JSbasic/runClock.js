@@ -24,13 +24,11 @@ for(counter=1; counter=100000; counter++){
 }
 */
 
-let counter=1;
-while(counter<=100000){
+let counter=60;
+while(counter<=0){
     let d = new Date();
-    let s = d.getSeconds();
-    let m = d.getMinutes();
-    let h = d.getHours();
-    time = (h + ":" + m + ":" + s);
+    let seconds = d.getSeconds();
+    time = (seconds);
     currentTime=[]
     if (time != currentTime){
         currentTime.push(time)
@@ -39,5 +37,5 @@ while(counter<=100000){
     else if (time == currentTime){
         currentTime = time
     }
-    counter++
+    counter--
 }
