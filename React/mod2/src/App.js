@@ -1,48 +1,48 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Login from './Login'
 import Nav from './Nav'
-import FlashCard from './flashCard'
+import Flashcard from './flashcardList'
 import Translate from './translate'
 import Logout from './logout'
-import FlashCardCategory from './flashCardCategory'
+import FlashcardList from './flashcardList'
 import Home from './Home'
-import {BrowserRouter as Router, Switch, Route, Link, NavLink, useHistory} from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route, Link, NavLink, useHistory, Redirect} from 'react-router-dom'
+import {useSelector} from 'react-redux'
+import PrivateRoute from './privateRoute'
 
 function App(){
   const history =useHistory()
   const [navState, setNavState] = useState(false)
-  // useEffect(()=>{
-  //   history.pushState("/Login")
-  // },[])
-    // const ifLogin =(e)=>{
-    //   e.preventDefault()
-    //   setNavState(true)
-    // }
+  const {isLogin} = useSelector(s=>s)
 
-    // const changeUrl=()=>{
-    //   history.push("/Login")
-    // }
     const PageNotFound =()=>(
       <div>404! - <Link to='/'></Link></div>
     )
-
+    useEffect(()=>{
+    console.log(isLogin)
+    },[])
+    useEffect(()=>{
+      console.log(isLogin)
+    },[isLogin])
     return(
       <div className='App'>
+          <Nav/>
           <Switch>
-            <Route path="/" exact component={Home}/>
-            <Route path="/Home" component={Home}/>
-            <Route path="/flashCard" component={FlashCard}/>
-            <Route path="/flashCardCategory" component={FlashCardCategory}/>
-            <Route path="/translate" component={Translate}/>
-            <Route path="/logout" component={Logout}/>
+            <Route auth={isLogin} path="/Home" component={Home}/>
+            <Route auth={isLogin} path="/flashcard" component={Flashcard}/>
+            <Route auth={isLogin} path="/flashcardList" component={FlashcardList}/>
+            <Route auth={isLogin} path='/translate' component={Translate}/>
+            <Route path='/Login' component={Login}/>
+            <Route auth={isLogin} path="/logout" component={Logout}/>
+            <Route path="/" exact render={()=>{
+              if(isLogin){
+                return <Redirect to = '/Home'/>
+              }else{
+                return <Redirect to = '/Login'/>
+              }
+            }}/> 
             <Route component={PageNotFound}/>
           </Switch>
-        {/* <h1>FryskTaal</h1>
-        <Route path='/Login'>
-          <Login setNavState={setNavState}/>
-        </Route>
-        {navState ? <Nav/>:''}
-        <button type='button' onClick={changeUrl}>Login</button> */}
       </div>
     )
 }

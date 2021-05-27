@@ -1,38 +1,288 @@
-.App {
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* background-color: rgb(245, 172, 35); */
+}
+body{
+  font-family: 'montseratt', sans-serif;
+  background-color: rgb(245, 172, 35);
+}
+
+.home{
+  /* background-image: url('./pics/normal-weather.jpg'); */
+  background: url('./pics/normal-weather.jpg') no-repeat, rgb(245, 172, 35);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 70%;
+  margin-left: 170px;
+  background-position: bottom;
+  transition: 0.4s ease-out;
+}
+/**
+ * Images
+ */
+.quote{
+  background: url('./pics/quote.jpg') no-repeat, rgb(245, 172, 35);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 30%;
+  margin-top: 50px;
+  margin-left: 40%;
+  background-position: bottom;
+  transition: 0.4s ease-out;
+}
+.quote2{
+  background: url('./pics/quote2.jpg') no-repeat, rgb(245, 172, 35);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 35%;
+  margin-top: 50px;
+  margin-left: 20%;
+  background-position: bottom;
+  transition: 0.4s ease-out;
+}
+.quote3{
+  background: url('./pics/quote3.jpg') no-repeat, rgb(245, 172, 35);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 30%;
+  margin-top: 50px;
+  margin-left: 40%;
+  background-position: bottom;
+  transition: 0.4s ease-out;
+}
+
+main{
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom, rgbn(0, 0, 0, 0.2), rgbn(0, 0, 0, 0.75));
+}
+.home .rain{
+  background-image: url('./pics/Raining.png');
+}
+/**
+ * Weather on Home Screen
+ */
+.search-box{
+  width: 100%;
+  margin: 0 0 75px;
+}
+.search-box .search-bar{
+  display: block;
+  width: 95%;
+  padding: 15px;
+  margin-left: 25px;
+
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 0px 0px 16px 16px;
+  margin-top: -15px;
+
+  box-shadow: 0px 5px rgba(0, 0, 0.2);
+
+  color: #313131;
+  font-size: 20px;
+
+  transition: 0.4s ease;
+}
+.location-box .location{
+  color:  rgba(255, 255, 255, 0.829);
+  font-size: 50px;
+  font-weight: 550;
+  text-align: center;
+  text-shadow: 3px 3px rgba(27, 27, 39, 0.514);
+}
+.location-box .date{
+  color: rgba(255, 255, 255, 0.829);
+  font-size: 30px;
+  padding: 30px;
+  font-weight: 350;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 2px 2px rgba(27, 27, 39, 0.514);
+}
+.weather-box{
   text-align: center;
 }
+.weather-box .temp{
+  position: relative;
+  display: inline-block;
+  margin: 30px auto;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  padding: 50px 30px;
+
+  color:rgba(255, 255, 255, 0.829);
+  font-size: 102px;
+  font-weight: 900;
+
+  text-shadow: 3px 6px rgba(27, 27, 39, 0.514);
+  text-align: center;
+  box-shadow: 3px 6px rgba(0, 0, 0, .2)
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.weather-box .weather{
+  color: rgba(255, 255, 255, 0.829);
+  font-size: 48px;
+  font-weight: 700;
+  text-shadow: 3px 3px rgba(27, 27, 39, 0.514);
+}
+/**
+ * Flashcard page
+ */
+.card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: .25rem;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
+  background-color: white;
+  transform-style:preserve-3d;
+  height: 150px;
+  width: 250px;
+  transition: 150ms;
+  cursor: pointer;
+  transform: perspective(1000px) rotateY(var(--rotate-y, 0))
+  translateY(var(--translate-y,0));
+  font-size: 40px;
+  font-weight: 400;
+}
+.card:hover{
+  --translate-y: -2px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
+}
+.card.flip{
+  --rotate-y: 180deg;
+}
+.card.front{
+  left: 0;
+}
+.card .front,
+.card .back{
+  position: absolute;
+  padding: 1rem;
+  backface-visibility: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card .back{
+  transform: rotateY(180deg)
+}
+/**
+ * NavBar
+ */
+nav{
+  color: rgba(90, 44, 128, 0.836);
+  font-size: 25px;
+  font-weight: 600;
+  text-shadow: 2px 2px rgba(10, 10, 20, 0.1);
+  top: 100px;
+  position: absolute;
   display: flex;
   flex-direction: column;
+}
+.flashcard-box { 
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  margin: 5px;
+  margin-top: 80px;
+  margin-left: 200px;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+/**
+ * All buttons
+ */
+.btn{
+  display:block;
+  background-color: rgb(66, 66, 247);
+  border-radius: 5px 5px 5px 5px;
+  width: 70px;
+  font-weight: 500;
+  color: #FFF;
+  align-content: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+/**
+ * Several classes to fix all the forms and the input/output & label tags. Got convoluted and lost at
+ a certain point. Looks sloppy with so many classes.
+ */
+ form{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin: 5px;
+  grid-area: form; 
+  width: 100vh;
+  margin-left: 10%;
+  height: 50px;
 }
+.myForm{
+  width: 80%;
+  color: #FFF;
+}
+.form{
+  width: auto;
+  margin-top: 30px;
+  color: #FFF;
+}
+label{
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 600;
+  color: #FFF;
+}
+.translate-grid{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  margin: 5px;
+  margin-top: 80px;
+  margin-left: 200px;
+  flex-wrap: wrap;
+  gap: 5px;
+  color: #FFF;
+}
+input{
+  margin: 3px;
+}
+.output{
+  display: block;
+  width: 450px;
+  padding: 25px;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+
+  background-color: rgba(245, 245, 245, 0.884);
+  border-radius: 5px 5px 5px 5px;
+  color: #313131;
+  font-size: 20px;
+
+  transition: 0.4s ease;
+}
+a{
+  color: rgba(95, 47, 134, 0.911)
+}
+a:hover{
+  color: rgb(56, 13, 245);
+}
+.fixTheBox{
+  width: 350px;
+  height: 23px;
+}
+.fixInput{
+  border-radius: 5px;
 }

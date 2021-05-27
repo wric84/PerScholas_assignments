@@ -3,6 +3,9 @@ import Failure from './Failure'
 import Success from './Success'
 import Home from './Home'
 import App from './App'
+import {useDispatch} from 'react-redux'
+import {login as loginAction} from './redux/actions'
+import quote from './pics/quote.jpg'
 
 let ogUserName = 'colton'
 let ogPassword = 'isCool'
@@ -11,6 +14,7 @@ const Login = (props) =>{
     const[username, setUserName] = useState('')
     const[password, setPassword] = useState('')
     const[login, setLogin] = useState('')
+    const dispatch = useDispatch()
 
     const handleChange = (e) =>{
         setUserName(e.target.value)
@@ -23,32 +27,31 @@ const Login = (props) =>{
     const handleSubmit = (e) =>{
         e.preventDefault();
         console.log(props)
-        if(username === ogUserName && password === ogPassword){
+        if(username == ogUserName && password == ogPassword){
+            console.log('Successfully Logged In')
+            dispatch(loginAction())
             setLogin(<Success username={ogUserName} setNavState={props.setNavState}/>)
             
         }else{
             setLogin(<Failure/>)
-            // console.log(username)
-            // console.log(password)
-            // console.log(props.username)
-            // console.log(props.password)
         }
     }
     return(
         <div>
             <div>{login}</div>
             <h3>Login Page</h3>
-            <form onSubmit={handleSubmit}>
+            <form className='form' onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username</label>
-                    <input onChange={handleChange} type="text" name='username'/>
+                    <input className='fixInput' onChange={handleChange} type="text" name='username'/>
                 </div>
                 <div>
                     <label htmlFor="password">Password</label>
-                    <input onChange={handleChange1} type="password" name='password'/>
+                    <input className='fixInput' onChange={handleChange1} type="password" name='password'/>
                 </div>
-                <button type='submit'>Login</button>
+                <button className='btn' type='submit'>Login</button>
             </form>
+            <img className='quote' src={quote} alt="quote" />
         </div>
     )
 }

@@ -7,9 +7,9 @@ import {BrowserRouter as Router, Switch, Route, Link, NavLink} from 'react-route
 
 const Header = () =>{
   return(
-  <header>
+  <nav className='nav'>
     {/* <NavLink to='/' activeClassName='is-active' exact={true}>Home</NavLink> */}
-    <NavLink to='/Nav' activeClassName='is-active' exact={true}>Home</NavLink>
+    <NavLink to='/Home' activeClassName='is-active' exact={true}>Home</NavLink>
     <br />
     <NavLink to='/flashCard' activeClassName='is-active' exact={true}>Add FlashCard</NavLink>
     <br />
@@ -17,17 +17,14 @@ const Header = () =>{
     <br />
     <NavLink to='/flashCardCategory' activeClassName='is-active' exact={true}>Practice</NavLink>
     <br />
-    <NavLink to='/logout' activeClassName='is-active' exact={true}>LogOut</NavLink>
-    
-  </header>
+    <NavLink to='/Logout' activeClassName='is-active' exact={true}>LogOut</NavLink>
+  </nav>
 )}
 
 const Nav = () => {
     return (
         <div>
             <Header/>
-            <h3>Naviagte</h3>
-            
         </div>
     )
 }

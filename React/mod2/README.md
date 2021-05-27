@@ -1,4 +1,23 @@
-# Getting Started with Create React App
+# Getting Started with FryskTaalApp
+
+Purpose: To help promote and learn Frisian - a UNESCO designated endangered language.
+
+User Experience:    - Home component that monitors the weather in the Frisian capital that can also search 
+                    other locations.
+                    - Flashcard component that users can generate  custom flashcards to create lessons and help with key words. Each flashcards is interactive and displays each word in either Frisian or English
+                    - Practice component that sorts the flashcards by category in order to help learn by grouping
+                    - Translate component using Google Translate API to find words or phrases and can be committed to flashcards. 
+                    -Login component for each individual to have their own learning page.
+
+Bugs:               - Nav bar displaying on the initial Home component before login. Not CSS to expectations yet.
+                    - Display weather component does not change picture based on weather.
+                    - CSS alignment
+
+Future Implimations:    -Currently still needs a practice component and Logout. Other potential features may include more
+                         information on the Frisisan Culture, language, and other sources of information
+
+APIs used: Google Translate, OpenWeather
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

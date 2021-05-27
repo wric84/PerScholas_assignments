@@ -1,6 +1,6 @@
 import {createStore, combineReducers} from 'redux'
-import {logReducer} from './reducers'
+import {logReducer, flashcardReducer} from './reducers'
 
-const store = createStore(combineReducers({isLogin:logReducer}))
+const store = createStore(combineReducers({isLogin:logReducer, flashcards:flashcardReducer}))
 
 export default store
