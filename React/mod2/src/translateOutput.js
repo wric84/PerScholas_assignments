@@ -26,7 +26,7 @@ const Convert=({language, text}) =>{
           params: {
             q: debouncedText,
             target: language.value,
-            key: "AIzaSyAcXAs-9ztsiD4jtDrt-phGzcwyfoLhEUY",
+            key: process.env.REACT_APP_API_KEY,
           },
         }
     )

@@ -1,0 +1,25 @@
+.card{
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+  
+.label{
+    width: max-content;
+    color: rgb(0, 255, 179);
+    font-size: 13px;
+    border-bottom: .5px solid rgb(0, 255, 179);
+    margin: 3px 0;
+}
+  
+.desc{
+    font-size: 14px;
+}
+  
+.star{
+    color:gold
+}
+  

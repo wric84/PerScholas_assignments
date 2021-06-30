@@ -25,6 +25,9 @@ export default function reducer(state = initialState, action) {
             newFlashCard[id].showFrysk = !newFlashCard[id].showFrysk
 
             return { flashCards: newFlashCard }
+        
+        case 'LOGOUT':
+            return {}
 
         default: 
             return state

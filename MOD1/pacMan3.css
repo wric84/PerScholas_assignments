@@ -1,8 +1,21 @@
-.grid-container {
+/* .grid-container {
     display: grid;
     grid-template-columns: 4fr 1fr;
     /* object-fit:cover; */
-}
+/* } */ 
+.grid-container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat (3, 1fr) ;
+    grid-template-rows: 100px; 
+    grid-gap: 10px;
+    grid-template-areas: 
+      "header header header header"
+      "main main main score" 
+      "main main main score" 
+      "main main main score"
+      "main main main score";
+  }
 
 .pacman{
     width: 32px;
@@ -10,40 +23,16 @@
     background-image: url(./images/PacManMO.png);
     background-size: cover;
     /* background-image: ; */
-    display: inline-block;
+    display: inline-flex;
     animation: panManAni 1s 1s infinite;
 }
-/* 
-.pacman::after{
-    display: inline-block;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(./images/PacMan2MC.png);
-    background-repeat: repeat;
-    background-position: 50% 0;
-    background-size: cover;
-    animation: pacmanAni 1s 1s infinite;
-  }
-  
-  @keyframes pacManAni {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-    100% { opacity: 0; }
-  } */
-/* @keyframes pacManAni {
-    0% { transform: rotate(90deg); }
-    50% { transform: rotate(0deg); }
-    100% { transform: rotate(90deg); }
-} */
 .pacman2{
     width: 32px;
     height: 32px;
     background-image: url(./images/PacMan2MO.png);
     background-size: cover;
     /* background-image: ; */
-    display: inline-block;
+    display: inline-flex;
 }
 .inky {
     width: 32px;
@@ -51,7 +40,7 @@
     background-image: url(./images/InkyMO.png);
     background-size: cover;
     /* background-image: ; */
-    display: inline-block;
+    display: inline-flex;
 }
 .blinky {
     width: 32px;
@@ -59,7 +48,7 @@
     background-image: url(./images/blinkyMO.png);
     background-size: cover;
     /* background-image: ; */
-    display: inline-block;
+    display: inline-flex;
 }
 
 .dot {
@@ -68,37 +57,37 @@
     background-image: url(./images/dotOM.png);
     background-size: cover;
     /* background-image: ; */
-    display: inline-block;
+    display: inline-flex;
 }
 .wall{
     width: 32px;
     height: 32px;
     background-image: url(./images/Brick.png);
     background-size: cover;
-    display: inline-block;
+    display: inline-flex;
 }
 .coin{
     width: 32px;
     height: 32px;
     background-image: url(./images/Dot.png);
     background-size: cover;
-    display: inline-block;
+    display: inline-flex;
 }
 .ground{
     width: 32px;
     height: 32px;
     background-color: black;
-    display: inline-block;
+    display: inline-flex;
 }
 div{
     margin: -1px;
     vertical-align: top;
 }
-.worlds{
-    grid-row-start:1;
-    grid-row-end: 2;
-    /* grid-column-start:1;
-    grid-column-end: 1; */
+.world{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    
 }
 #player1{
     grid-row-start:1;
@@ -115,16 +104,14 @@ img {
 }
 
 .scoreboard{
-    display:table-column;
-    display:grid;
-    grid-column-start: 2;
-    grid-column-end: 2;
-    grid-row-start: 2;
-    grid-row-end: 2;
-    position:relative;
+    /* display:table-column;
+    display:grid; */
     justify-content: space-evenly;
-    background-color:rgba(255, 255, 0, 0.774);
-    border:solid 20px blue;
+    background-color:rgba(255, 255, 0, 0.815);
+    border:solid 40px;
+    border-image: url(./images/Brick.png);
+    color: white;
+    padding: 0;
     margin: 0;
 }
 body{
@@ -135,7 +122,7 @@ body{
     font-size: 40px;
     color: white;
     position: relative;
-    top: 10px;
+    top: -30px;
     /* top: 45%;
     left: 50%; */
     /* transform: translate(-50%, -55%); */
@@ -156,15 +143,6 @@ p{
     align-items: center;
 
 }
-.time{
-    position: relative;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    grid-column-start: 1;
-    grid-column-end: 1;
-    grid-row-start: 1;
-
-}
 .rounds{
     position: relative;
     margin-top: 10px;
@@ -178,29 +156,30 @@ a.btn {
     -webkit-appearance: button;
     -moz-appearance: button;
     appearance: button;
-    height: 75px;
-    width: 75px;
+    height: 105px;
+    width: 105px;
     border:solid black;
     border-radius: 50%;
     background-image: url(./images/PacManMO.png);
     background-size: cover;
     text-decoration: none;
     color:white;
-    font-size: 22px;
+    font-size: 25px;
     position: relative;
 }
 .text{
     margin-top: 50px;
     padding-top: 30px;
-    position: absolute;
+    /* position: absolute; */
 }
 h1 {
     color: white;
     width: 100%;
-    grid-column-start: 2;
-    grid-column-end: 3;
+    justify-content: center;
+    align-content: center;
+    display: flex;
 }
-nav {
+/* nav {
     position: relative;
     width: 300px;
     justify-content: space-between;
@@ -211,9 +190,59 @@ nav {
     grid-row-start: 2;
     grid-row-end: 3;
 
-}
-#homeScreen{
+} */
+/* #homeScreen{
     /* display: flex; */
-    display: grid;
+    /* display: grid;
     grid-template-columns: 5;
+} */
+.header {
+    grid-area: header;
+  }
+  
+.main {
+grid-area: main;
+justify-content: center;
+align-content: center;
+display:flexbox;
 }
+  
+.score {
+grid-area: score;
+padding: 0;
+
+}
+  
+nav {
+align-content: center;
+justify-content: center;
+display: flex;
+}
+.divider{
+    width:100px;
+    height:auto;
+    display:inline-block;
+}
+  
+body {
+    font-size: 1.4em;
+    font-family: 'Varela Round', sans-serif;
+font-weight: bold;
+padding: 0;
+margin: 0;
+justify-content: center;
+align-content: center;
+}
+.grid-container > * {
+text-shadow: 0 2px 0 rgba(110,133,156,0.12);
+/* padding: 0.85em; */
+/* border: solid 1px rgba(110,133,156,0.15); */
+}
+.counter{
+    font: white;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+}
+  

@@ -2,7 +2,8 @@
 
 Purpose: To help promote and learn Frisian - a UNESCO designated endangered language.
 
-User Experience:    - Home component that monitors the weather in the Frisian capital that can also search 
+User Experience:    
+                    - Home component that monitors the weather in the Frisian capital that can also search 
                     other locations.
                     - Flashcard component that users can generate  custom flashcards to create lessons and help with key words. Each flashcards is interactive and displays each word in either Frisian or English
                     - Practice component that sorts the flashcards by category in order to help learn by grouping

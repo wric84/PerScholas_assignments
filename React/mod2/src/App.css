@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* background-color: rgb(245, 172, 35); */
 }
 body{
   font-family: 'montseratt', sans-serif;
@@ -10,7 +9,6 @@ body{
 }
 
 .home{
-  /* background-image: url('./pics/normal-weather.jpg'); */
   background: url('./pics/normal-weather.jpg') no-repeat, rgb(245, 172, 35);
   background-repeat: no-repeat;
   background-size: contain;

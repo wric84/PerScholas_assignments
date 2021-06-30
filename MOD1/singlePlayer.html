@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="pacMan3.css">
+    <!-- <script src="pacMan3.js"></script> -->
+</head>
+
+<body>
+    <!-- <p id='para1'>Would you like to play a game?</p> -->
+    <p class='time' id='timer'>Time 
+    <p class='time' id='digits'></p>
+    </p>
+    <!-- <p class='rounds'>Round
+        <p class='rounds' id='round'></p>
+    </p> -->
+
+    <!-- <input type = "button" onclick = "drawWorld()" value = "Display">   -->
+    <div class="grid-container">
+        <div class="scoreboard" id="player1">
+            Player 1
+            <h2 class="score" id="player1Score">0</h2>
+            <h2 class="score" id="p1Counter">0</h2>
+        </div>
+        <!-- <button onclick="drawWorld()">Click Here</button> <------Test Button -->
+        <div class="worlds" id="world">
+        </div>
+    </div>
+    
+    <script>
+        let p1Score = 0
+        let counter1 = 0
+        let round = 1
+
+        // const timer = document.getElementById('digits');
+
+        // let sec = 11;
+        // let stoptime = true;
+
+        // function startTimer() {
+        //     if (stoptime == true) {
+        //         stoptime = false;
+        //         timerCycle();
+        //     }
+        // }
+        // function stopTimer() {
+        //     if (stoptime == false) {
+        //         stoptime = true;
+        //     }
+        // }
+        
+
+        // function timerCycle() {
+        //     if (stoptime == false) {
+
+        //         sec = sec - 1;
+        //         if (sec < 10 || sec == 0) {
+        //             sec = '0' + sec;
+        //         }
+        //         if(sec == '00'){
+        //             // round += 1;
+        //             // round.innerHTML = round;
+        //             counter1 +=1;
+        //             p1Counter.innerHTML = counter1;
+        //             sec = 10;    
+        //         }
+        //         digits.innerHTML = sec;
+        //         console.log(sec)
+        //         setTimeout("timerCycle()", 1000);
+        //     }
+        // }
+
+        // function resetTimer() {
+        //     timer.innerHTML = '00';
+        // }
+
+        // document.addEventListener("DOMContentLoaded", function () {
+        //     startTimer();
+        // });
+        
+        // let wall = '<div class="wall"></div>'
+        let map = [ //Grid
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], //1
+            [1, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1], //2
+            [1, 3, 3, 1, 3, 3, 3, 3, 3, 3, 1, 1, 3, 1, 1, 3, 3, 3, 3, 3, 1, 3, 3, 1], //3
+            [1, 3, 1, 2, 1, 3, 1, 1, 3, 1, 3, 3, 3, 3, 3, 1, 3, 1, 3, 1, 2, 1, 3, 1], //4
+            [1, 3, 3, 1, 3, 3, 3, 3, 3, 3, 1, 1, 3, 1, 1, 3, 3, 3, 3, 3, 1, 3, 3, 1], //5
+            [1, 3, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 1], //6
+            [1, 3, 1, 3, 1, 1, 3, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1, 3, 1], //7
+            [1, 3, 1, 3, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 1, 3, 1], //8
+            [1, 3, 1, 3, 3, 3, 3, 3, 3, 1, 1, 3, 3, 1, 1, 3, 3, 3, 3, 3, 3, 1, 3, 1], //9
+            [1, 3, 1, 3, 1, 1, 1, 1, 3, 3, 6, 2, 7, 3, 3, 3, 1, 1, 1, 1, 3, 1, 3, 1], //10
+            [1, 3, 1, 3, 3, 3, 3, 3, 3, 3, 2, 8, 2, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 1], //11
+            [1, 3, 1, 3, 3, 1, 3, 1, 3, 1, 1, 3, 3, 1, 1, 3, 1, 3, 1, 3, 3, 1, 3, 1], //12
+            [1, 3, 1, 3, 1, 1, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 1, 1, 3, 1, 3, 1], //13
+            [1, 3, 1, 3, 3, 1, 3, 1, 1, 1, 1, 3, 1, 3, 1, 1, 1, 3, 1, 3, 3, 1, 3, 1], //14
+            [1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1], //15
+            [1, 3, 3, 1, 3, 3, 3, 3, 1, 1, 1, 3, 1, 3, 1, 1, 1, 3, 3, 3, 1, 3, 3, 1], //16
+            [1, 3, 1, 2, 1, 3, 3, 3, 1, 2, 1, 3, 1, 3, 1, 2, 1, 3, 3, 1, 2, 1, 3, 1], //17
+            [1, 3, 3, 1, 3, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1, 1, 1, 1, 3, 3, 1, 3, 3, 1], //18
+            [1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1], //19
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] //20
+        ]
+
+        let map1 = [ //Grid
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], //1
+            [1, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1], //2
+            [1, 3, 3, 1, 3, 3, 3, 3, 3, 3, 1, 1, 3, 1, 1, 3, 3, 3, 3, 3, 1, 3, 3, 1], //3
+            [1, 3, 1, 2, 1, 3, 1, 1, 3, 1, 3, 3, 3, 3, 3, 1, 3, 1, 3, 1, 2, 1, 3, 1], //4
+            [1, 3, 3, 1, 3, 3, 3, 3, 3, 3, 1, 1, 3, 1, 1, 3, 3, 3, 3, 3, 1, 3, 3, 1], //5
+            [1, 3, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 1], //6
+            [1, 3, 1, 3, 1, 1, 3, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1, 3, 1], //7
+            [1, 3, 1, 3, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 1, 3, 1], //8
+            [1, 3, 1, 3, 3, 3, 3, 3, 3, 1, 1, 3, 3, 1, 1, 3, 3, 3, 3, 3, 3, 1, 3, 1], //9
+            [1, 3, 1, 3, 1, 1, 1, 1, 3, 3, 6, 2, 7, 3, 3, 3, 1, 1, 1, 1, 3, 1, 3, 1], //10
+            [1, 3, 1, 3, 3, 3, 3, 3, 3, 3, 2, 8, 2, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 1], //11
+            [1, 3, 1, 3, 3, 1, 3, 1, 3, 1, 1, 3, 3, 1, 1, 3, 1, 3, 1, 3, 3, 1, 3, 1], //12
+            [1, 3, 1, 3, 1, 1, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 1, 1, 3, 1, 3, 1], //13
+            [1, 3, 1, 3, 3, 1, 3, 1, 1, 1, 1, 3, 1, 3, 1, 1, 1, 3, 1, 3, 3, 1, 3, 1], //14
+            [1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1], //15
+            [1, 3, 3, 1, 3, 3, 3, 3, 1, 1, 1, 3, 1, 3, 1, 1, 1, 3, 3, 3, 1, 3, 3, 1], //16
+            [1, 3, 1, 2, 1, 3, 3, 3, 1, 2, 1, 3, 1, 3, 1, 2, 1, 3, 3, 1, 2, 1, 3, 1], //17
+            [1, 3, 3, 1, 3, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1, 1, 1, 1, 3, 3, 1, 3, 3, 1], //18
+            [1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1], //19
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] //20
+        ]
+
+        let pacman = { //where pacman starts in array by element#
+            x: 1,
+            y: 1,
+        }
+        let inky = {
+            x: 10,
+            y: 9
+        }
+        let blinky = {
+            x: 12,
+            y: 9
+        }
+        let dot = {
+            x: 11,
+            y: 10
+        }
+        
+        
+        function drawWorld() {
+            document.getElementById('world').innerHTML = "";
+            for (let y = 0; y < map.length; y = y + 1) {
+                //console.log(map[y])
+                for (let x = 0; x < map[y].length; x = x + 1) {
+                    //console.log(document.getElementById("digits").innerHTML)
+                    if (map != '00'){
+                        //console.log('inside loop')
+                        //console.log(document.getElementById("digits").innerHTML)
+                        function onKeyDown(event) {   
+                            event.preventDefault();
+                        }
+                        //console.log(map[y][x])
+                        if (map[y][x] == 1) {
+                            //console.log(map[y][x]===1)
+                            document.getElementById('world').innerHTML += '<div class="wall"></div>';
+                        }
+                        else if (map[y][x] == 3) {
+                            document.getElementById('world').innerHTML += '<div class="coin"></div>';
+                        }
+                        else if (map[y][x] == 2) {
+                            document.getElementById('world').innerHTML += '<div class="ground"></div>';
+                        }
+                        else if (map[y][x] == 5) {
+                            document.getElementById('world').innerHTML += '<div class="pacman"></div>';
+                        }
+                        else if (map[y][x] === 6) {
+                            document.getElementById('world').innerHTML += '<div class="inky"></div>';
+                        }
+                        else if (map[y][x] === 7) {
+                            document.getElementById('world').innerHTML += '<div class="blinky"></div>';
+                        }
+                        else if (map[y][x] === 8) {
+                            document.getElementById('world').innerHTML += '<div class="dot"></div>';
+                        }
+                    }
+                    // else{
+                    //     console.log("Made it here")
+                    //     if(p1Score > p2Score){
+                    //     round += 1;
+                    //     sec += 60;
+                    //     counter1 += 1;
+                    //     p1Counter.innerHTML = counter1;
+
+                    // }
+                    // else if(p2Score > p1Score){
+                    //     round + 1;
+                    //     sec + 60;
+                    //     counter2 += 1;
+                    //     p2Counter.innerHTML = counter2;
+                    // }
+                    
+                // }
+            }
+                document.getElementById('world').innerHTML += "<br>";
+                //console.log(map)
+            }
+        }
+
+        drawWorld()
+
+        function drawWorld1() {
+            document.getElementById('world').innerHTML = "";
+            for (let y = 0; y < map1.length; y = y + 1) {
+                //console.log(map[y])
+                for (let x = 0; x < map1[y].length; x = x + 1) {
+                    //console.log(document.getElementById("digits").innerHTML)
+                    if (map1 != map){
+                        //console.log('inside loop')
+                        //console.log(document.getElementById("digits").innerHTML)
+                        function onKeyDown(event) {   
+                            event.preventDefault();
+                        }
+                        //console.log(map1[y][x])
+                        if (map1[y][x] == 1) {
+                            //console.log(map1[y][x]===1)
+                            document.getElementById('world').innerHTML += '<div class="wall"></div>';
+                        }
+                        else if (map1[y][x] == 3) {
+                            document.getElementById('world').innerHTML += '<div class="coin"></div>';
+                        }
+                        else if (map1[y][x] == 2) {
+                            document.getElementById('world').innerHTML += '<div class="ground"></div>';
+                        }
+                        else if (map1[y][x] == 5) {
+                            document.getElementById('world').innerHTML += '<div class="pacman"></div>';
+                        }
+                        else if (map1[y][x] === 6) {
+                            document.getElementById('world').innerHTML += '<div class="inky"></div>';
+                        }
+                        else if (map1[y][x] === 7) {
+                            document.getElementById('world').innerHTML += '<div class="blinky"></div>';
+                        }
+                        else if (map1[y][x] === 8) {
+                            document.getElementById('world').innerHTML += '<div class="dot"></div>';
+                        }
+                    }
+                    // else{
+                    //     console.log("Made it here")
+                    //     if(p1Score > p2Score){
+                    //     round += 1;
+                    //     sec += 60;
+                    //     counter1 += 1;
+                    //     p1Counter.innerHTML = counter1;
+
+                    // }
+                    // else if(p2Score > p1Score){
+                    //     round + 1;
+                    //     sec + 60;
+                    //     counter2 += 1;
+                    //     p2Counter.innerHTML = counter2;
+                    // }
+                    
+                // }
+            }
+                document.getElementById('world').innerHTML += "<br>";
+                //console.log(map)
+            }
+        }
+
+        drawWorld1()
+
+        const timer = document.getElementById('digits');
+
+        let sec = 60;
+        let stoptime = true;
+
+        function startTimer() {
+            if (stoptime == true) {
+                stoptime = false;
+                timerCycle();
+            }
+        }
+        function stopTimer() {
+            if (stoptime == false) {
+                stoptime = true;
+            }
+        }
+
+
+        function timerCycle() {
+            if (stoptime == false) {
+
+                sec = sec - 1;
+                if (sec < 10 || sec == 0) {
+                    sec = '0' + sec;
+                }
+                if(sec == '00' && p1Score > p2Score){
+                    //round += 1;
+                    //round.innerHTML = round;
+                    counter1 +=1;
+                    p1Counter.innerHTML = counter1;
+                    sec = 60;   
+                    //drawWorld1();
+                    if (map != map1){
+                        console.log(map)
+                        // map = map1;
+                        // map1 = 
+                        // map =[]
+                        let tempMap = map1
+                        map1 = map
+                        map = tempMap
+                        //tempMap=[];
+                        pacman = {x: 1, y:1};
+                        inky = {x:10, y:9};
+                        blinky = {x: 12, y:9};
+                        dot = {x:11, y:10};
+                        drawWorld1();
+                        drawWorld();
+                    }
+                    
+                    // pacman = { //where pacman starts in array by element#
+                    //     x: 1,
+                    //     y: 1,
+                    // }
+                    
+                }
+                else if(sec == '00'){
+                    sec = 60;  
+                }
+                digits.innerHTML = sec;
+                console.log(sec)
+                setTimeout("timerCycle()", 1000);
+            }
+            
+        }
+
+        function resetTimer() {
+            timer.innerHTML = '00';
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            startTimer();
+        });
+
+        // function winner(){
+        //     if(sec == '00')
+        // }
+
+        document.onkeydown = function (e) {
+            if (e.keyCode === 37) {
+                //left
+                //Pacman movement
+                if (map[pacman.y][pacman.x - 1] !== 1) {
+                    map[pacman.y][pacman.x] = 2;
+                    p1Score += 100;
+                    player1Score.innerHTML = p1Score;
+                    // console.log(p1Score+100)
+                    // console.log(p1Score)
+                    pacman.x = pacman.x - 1;
+                    map[pacman.y][pacman.x] = 5
+                    //Inky Movement (in unison with pacman)
+                    if (map[inky.y][inky.x - 1] !== 1 && map[inky.y][inky.x -1] !== 7 && map[inky.y][inky.x - 1] !== 8) {
+                        let tempSpace = map[inky.y][inky.x - 1]
+                        map[inky.y][inky.x - 1] = map[inky.y][inky.x];
+                        map[inky.y][inky.x] = tempSpace
+                        inky.x = inky.x - 1;
+                        map[inky.y][inky.x] = 6;
+                    //Blinky Movement (opposite of pacman)
+                    if (map[blinky.y][blinky.x + 1] !== 1 && map[blinky.y][blinky.x+1] !== 6 && map[blinky.y][blinky.x+1] !== 8) {
+                        let tempSpace1 = map[blinky.y][blinky.x + 1]
+                        map[blinky.y][blinky.x + 1] = map[blinky.y][blinky.x];
+                        map[blinky.y][blinky.x] = tempSpace1
+                        blinky.x = blinky.x + 1;
+                        map[blinky.y][blinky.x] = 7
+                    //Dot Movement (in opposite axis pacman)
+                    if (map[dot.y - 1][dot.x] !== 1 && map[dot.y -1][dot.x] !== 7 && map[dot.y -1][dot.x] !== 6) {
+                        let tempSpace = map[dot.y - 1][dot.x]
+                        map[dot.y - 1][dot.x] = map[dot.y][dot.x];
+                        map[dot.y][dot.x] = tempSpace
+                        dot.y = dot.y - 1;
+                        map[dot.y][dot.x] = 8;
+                    }
+                    }
+                    }
+                    drawWorld()
+                }
+            }
+            else if (e.keyCode === 38) {
+                //up
+                //Pacman movement
+                if (map[pacman.y - 1][pacman.x] !== 1) {
+                    map[pacman.y][pacman.x] = 2;
+                    p1Score += 100;
+                    player1Score.innerHTML = p1Score;
+                    pacman.y = pacman.y - 1;
+                    map[pacman.y][pacman.x] = 5
+                    //Inky Movement (in unison with pacman)
+                    if (map[inky.y - 1][inky.x] !== 1 && map[inky.y -1][inky.x] !== 7 && map[inky.y -1][inky.x] !== 8) {
+                        let tempSpace = map[inky.y - 1][inky.x]
+                        map[inky.y - 1][inky.x] = map[inky.y][inky.x];
+                        map[inky.y][inky.x] = tempSpace
+                        inky.y = inky.y - 1;
+                        map[inky.y][inky.x] = 6;
+                    //Blinky Movement (opposite of pacman)
+                    if (map[blinky.y + 1][blinky.x] !== 1 && map[blinky.y +1][blinky.x] !== 6 && map[blinky.y +1][blinky.x] !== 8) {
+                        let tempSpace1 = map[blinky.y + 1][blinky.x];
+                        map[blinky.y + 1][blinky.x] = map[blinky.y][blinky.x];
+                        map[blinky.y][blinky.x] = tempSpace1;
+                        blinky.y = blinky.y + 1;
+                        map[blinky.y][blinky.x] = 7
+                    //Dot Movement (opposite axis as pacman)
+                    if (map[dot.y][dot.x - 1] !== 1 && map[dot.y][dot.x -1] !== 7 && map[dot.y][dot.x -1] !== 6) {
+                        let tempSpace = map[dot.y][dot.x - 1]
+                        map[dot.y][dot.x - 1] = map[dot.y][dot.x];
+                        map[dot.y][dot.x] = tempSpace
+                        dot.x = dot.x - 1;
+                        map[dot.y][dot.x] = 8;
+                    }
+                    }
+                    }
+                    drawWorld()
+                }
+            }
+            if (e.keyCode === 39) {
+                //right
+                //Pacman movement
+                if (map[pacman.y][pacman.x + 1] !== 1) {
+                    map[pacman.y][pacman.x] = 2;
+                    p1Score += 100;
+                    player1Score.innerHTML = p1Score;
+                    pacman.x = pacman.x + 1;
+                    map[pacman.y][pacman.x] = 5;
+                    //Inky Movement (in unison with pacman)
+                    if (map[inky.y][inky.x + 1] !== 1 && map[inky.y][inky.x+1] !== 7 && map[inky.y][inky.x+1] !== 8) {
+                        let tempSpace = map[inky.y][inky.x + 1]
+                        map[inky.y][inky.x + 1] = map[inky.y][inky.x];
+                        map[inky.y][inky.x] = tempSpace;
+                        inky.x = inky.x + 1;
+                        map[inky.y][inky.x] = 6;
+                    //Blinky Movement (opposite of pacman)
+                    if (map[blinky.y][blinky.x - 1] !== 1 && map[blinky.y][blinky.x-1] !== 6 && map[blinky.y][blinky.x-1] !== 8) {
+                        let tempSpace1 = map[blinky.y][blinky.x - 1];
+                        map[blinky.y][blinky.x - 1] = map[blinky.y][blinky.x];
+                        map[blinky.y][blinky.x] = tempSpace1;
+                        blinky.x = blinky.x - 1;
+                        map[blinky.y][blinky.x] = 7;
+                    //Dot Movement (opposite axis as pacman)
+                    if (map[dot.y + 1][dot.x] !== 1 && map[dot.y +1][dot.x] !== 7 && map[dot.y +1][dot.x] !== 6) {
+                        let tempSpace = map[dot.y+1][dot.x]
+                        map[dot.y + 1][dot.x] = map[dot.y][dot.x];
+                        map[dot.y][dot.x] = tempSpace;
+                        dot.y = dot.y + 1;
+                        map[dot.y][dot.x] = 8;
+                    }
+                    }
+                    }
+                    drawWorld()
+                }
+            }
+            if (e.keyCode === 40) {
+                //down
+                //Pacman movement
+                if (map[pacman.y + 1][pacman.x] !== 1) {
+                    map[pacman.y][pacman.x] = 2;
+                    p1Score += 100;
+                    player1Score.innerHTML = p1Score;
+                    pacman.y = pacman.y + 1;
+                    map[pacman.y][pacman.x] = 5
+                    //Inky Movement (in unison with pacman)
+                    if (map[inky.y + 1][inky.x] !== 1 && map[inky.y + 1][inky.x] !== 7 && map[inky.y + 1][inky.x] !== 8) {
+                        let tempSpace = map[inky.y + 1][inky.x]
+                        map[inky.y + 1][inky.x] = map[inky.y][inky.x];
+                        map[inky.y][inky.x] = tempSpace;
+                        inky.y = inky.y + 1;
+                        map[inky.y][inky.x] = 6;
+                    //Blinky Movement (opposite of pacman)
+                    if (map[blinky.y - 1][blinky.x] !== 1 && map[blinky.y - 1][blinky.x] !== 6 && map[blinky.y - 1][blinky.x] !== 8) {
+                        let tempSpace1 = map[blinky.y - 1][blinky.x];
+                        map[blinky.y - 1][blinky.x] = map[blinky.y][blinky.x];
+                        map[blinky.y][blinky.x] = tempSpace1;
+                        blinky.y = blinky.y - 1;
+                        map[blinky.y][blinky.x] = 7;
+                    //Dot Movement (opposite axis as pacman)
+                    if (map[dot.y][dot.x + 1] !== 1 && map[dot.y][dot.x + 1] !== 7 && map[dot.y][dot.x + 1] !== 6) {
+                        let tempSpace = map[dot.y][dot.x + 1]
+                        map[dot.y][dot.x + 1] = map[dot.y][dot.x];
+                        map[dot.y][dot.x] = tempSpace;
+                        dot.x = dot.x + 1;
+                        map[dot.y][dot.x] = 8;
+                    }
+                    }
+                    }
+                    drawWorld()
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
