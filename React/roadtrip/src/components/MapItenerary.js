@@ -54,6 +54,7 @@ function MapItenerary() {
             latitude:newPlace.latitude,
             longitude:newPlace.longitude,
             location: {city,state:_state},
+            
         }
         try{
             const res = await axios.post("http://localhost:8080/api/attractions", newPin)
@@ -103,8 +104,9 @@ function MapItenerary() {
                         closeOnClick={false}
                         anchor="left" 
                         onClose={()=>setCurrentPlaceId(null)}
+                        className="popup"
                     >
-                    <div className="card">
+                    <div id="card">
                     <label>Place</label>
                     <h4 className="place">{p.name}</h4>
                     <label>Review</label>

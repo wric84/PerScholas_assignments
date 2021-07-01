@@ -1,11 +1,14 @@
-.card{
-  width: 250px;
-  height: 250px;
+#card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  background-color: rgb(26, 18, 18);
-  
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #2d2b2b !important;
+  background-clip: border-box !important;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  width: 1vw;
 }
 
 label{
@@ -37,7 +40,7 @@ label{
 
 form{
   width: 250px;
-  height: 250px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -57,8 +60,8 @@ input::placeholder, textarea::placeholder{
   border:none;
   padding: 5px;
   border-radius: 5px;
-  color: rgb(163, 162, 162);
-  background-color: tomato;
+  color: rgb(10, 10, 10);
+  background-color: rgb(71, 255, 178);
   cursor: pointer;
 }
 
@@ -69,4 +72,71 @@ h4{
 .formButton{
   background-color: rgb(153, 152, 152);
   color: rgb(0, 255, 179);
+}
+
+.mapboxgl-popup-close-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 0;
+  border-radius: 0 3px 0 0;
+  cursor: pointer;
+  color: white;
+  z-index: 1;
+  background-color: black;
+}
+
+.mapboxgl-popup-content {
+  position: relative;
+  background-color: black !important;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+  padding: 10px 10px 15px;
+  pointer-events: auto;
+}
+
+.navbar-expand {
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  width: 100%;
+  height: 30px;
+  padding-left: 30%;
+}
+
+input, select, textarea{
+  background-color: rgb(61, 55, 55);
+  color: white;
+}
+
+.mapboxgl-popup-tip{
+    border-color: rgb(133, 131, 131) !important;
+    }
+
+.loginForm{
+  justify-content: center;
+  position: relative;
+  display: inline-block;
+}
+
+.login{
+  display: block;
+  text-align: center;
+  color: black;
+  background-color: black;
+  height: 100vh;
+}
+
+body {
+  text-align: center;
+}
+form {
+  display: inline-block;
+}
+
+.btn{
+  color: cyan;
+  font-weight: 300;
+}
+.fixInput{
+  background-color: rgb(187, 185, 185);
 }

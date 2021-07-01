@@ -1,26 +1,79 @@
 import React from 'react'
 import {BrowserRouter as Router, Switch, Route, Link, NavLink} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import * as ReactBootStrap from 'react-bootstrap'
+import { useDispatch, useSelector } from "react-redux";
+import { Navbar, Nav, Image } from "react-bootstrap"
+import { deleteToken, deleteUser, login, logout } from "../redux/action";
+import ExploreIcon from '@material-ui/icons/Explore';
 
-function Nav(){
-  return(
-    <div className="nav">
-  <ReactBootStrap.Navbar bg="dark" variant="dark">
-    <ReactBootStrap.Navbar.Brand href="#home">Roadtrip</ReactBootStrap.Navbar.Brand>
-    <ReactBootStrap.Nav className="mr-auto">
-      <ReactBootStrap.Nav.Link href="#home">Home</ReactBootStrap.Nav.Link>
-      <ReactBootStrap.Nav.Link href="#features">Plan an Adventure</ReactBootStrap.Nav.Link>
-      <ReactBootStrap.Nav.Link href="#pricing">Log Out</ReactBootStrap.Nav.Link>
-    </ReactBootStrap.Nav>
-    <ReactBootStrap.Form inline>
-      <ReactBootStrap.FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <ReactBootStrap.Button variant="outline-info">Search</ReactBootStrap.Button>
-    </ReactBootStrap.Form>
-  </ReactBootStrap.Navbar>
-  <br />
-  </div>
-)}
+const Navigation = () => {
+
+    const dispatch = useDispatch();
+    const { isLoggedIn, user } = useSelector(s=>s);
+
+    async function logoutScenario() {
+      dispatch(logout());
+  }
+
+  return (
+    <Navbar expand="lg" bg="dark" variant="dark">
+        <Navbar.Brand>
+            <Link to="/">
+                <ExploreIcon
+                style={{ color: "cyan", background: "black", fontSize: "48px"}} />
+            </Link>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ml-auto">
+                {
+                    (
+                        isLoggedIn && user.username?
+                        [
+                            <span className="nav-text p-2">Welcome back {user.username}</span>,
+                            <Nav.Link className="nav-text">
+                                <Link to="/" onClick={() => logoutScenario()}>
+                                    Logout
+                                </Link>
+                             </Nav.Link>,
+                        ]
+                        :
+                        [
+                            <Nav.Link className="nav-text">
+                                <Link to="/Signup">
+                                    Signup
+                                </Link>
+                            </Nav.Link>,
+                            <Nav.Link href="#login" className="nav-text">
+                                <Link to="/Login">
+                                    Login
+                                </Link>
+                            </Nav.Link>,
+                        ]
+                    )
+                }
+            </Nav>
+        </Navbar.Collapse>
+    </Navbar>
+);
+}
+  // return(
+  //   <div className="nav">
+  // <ReactBootStrap.Navbar bg="dark" variant="dark">
+  //   <ReactBootStrap.Navbar.Brand href="#home">Roadtrip</ReactBootStrap.Navbar.Brand>
+  //   <ReactBootStrap.Nav className="mr-auto">
+  //     <ReactBootStrap.Nav.Link href="#home">Home</ReactBootStrap.Nav.Link>
+  //     <ReactBootStrap.Nav.Link href="#features">Plan an Adventure</ReactBootStrap.Nav.Link>
+  //     <ReactBootStrap.Nav.Link href="#pricing">Log Out</ReactBootStrap.Nav.Link>
+  //   </ReactBootStrap.Nav>
+  //   <ReactBootStrap.Form inline>
+  //     <ReactBootStrap.FormControl type="text" placeholder="Search" className="mr-sm-2" />
+  //     <ReactBootStrap.Button variant="outline-info">Search</ReactBootStrap.Button>
+  //   </ReactBootStrap.Form>
+  // </ReactBootStrap.Navbar>
+  // <br />
+  // </div>
+//)}
 
 
 // const Header = () =>{
@@ -47,4 +100,4 @@ function Nav(){
 //     )
 // }
 
-export default Nav
+export default Navigation

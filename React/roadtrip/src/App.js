@@ -5,7 +5,7 @@ import React, {useState, useEffect} from 'react'
 import Login from './components/Login'
 import NewUser from './components/NewUser'
 import Attraction from './components/Attraction'
-import Nav from './components/Nav'
+import Navigation from './components/Nav'
 import Logout from './components/Logout'
 import Home from './components/Home'
 import Itenerary from './components/Itenerary'
@@ -39,7 +39,7 @@ function App(){
     },[isLogin])
     return(
       <div className='App'>
-          <Nav/>
+          <Navigation/>
           <Switch>
             <Route auth={isLogin} path="/Home" component={Home}/>
             <Route auth={isLogin} path="/AttractionList" component={AttractionList}/>

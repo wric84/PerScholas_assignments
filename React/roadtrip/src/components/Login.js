@@ -37,10 +37,10 @@ const Login = (props) =>{
         }
     }
     return(
-        <div>
+        <div className="login">
             <div>{login}</div>
             <h3>Welcome</h3>
-            <form className='form' onSubmit={handleSubmit}>
+            <form className='loginForm' onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username</label>
                     <input className='fixInput' onChange={handleChange} type="text" name='username'/>
@@ -51,7 +51,6 @@ const Login = (props) =>{
                 </div>
                 <button className='btn' type='submit'>Login</button>
             </form>
-            <Link to="/NewUser"> New User?</Link>
 
         </div>
     )

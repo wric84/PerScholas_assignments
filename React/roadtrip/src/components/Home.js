@@ -1,10 +1,11 @@
 import React from 'react'
+import MapItenerary from './MapItenerary'
 
 function Home() {
     return (
         <div>
             <div>
-                <h3>Your Trips</h3>
+                <MapItenerary/>
             </div>
         </div>
     )
