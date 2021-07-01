@@ -20,7 +20,7 @@ const Navigation = () => {
         <Navbar.Brand>
             <Link to="/">
                 <ExploreIcon
-                style={{ color: "cyan", background: "black", fontSize: "48px"}} />
+                style={{ color: "cyan", background: "rgb(56,56,56)", fontSize: "48px"}} />
             </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
