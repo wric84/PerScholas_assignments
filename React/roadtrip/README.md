@@ -1,4 +1,20 @@
-# Getting Started with Create React App
+# Roadtrip - A new way to plan a trip
+
+Purpose: 
+                    - To come up with a better way to plan a trip. To make sure you don't miss anything on your next vacation.
+
+User Experience:    
+                    - Instantly jump into our map and place markers by double-clicking. Remove markers that are not of interest to you.
+
+Bugs:               
+                    - Groundwork for multiple users is there, but needs further set up. Would be nice to have a search bar that takes you to starting destination, Something      similar to googleRoutes API that shows distance and time.
+
+Future Implimations:   
+                    -Ticketwest API, EventBrite API, AtlasObscura API, Multiple Itineraries on Home Screen to choose from.
+
+APIs used:          
+                    - mapbox API, @material-ui API
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
