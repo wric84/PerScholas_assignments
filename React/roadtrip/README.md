@@ -15,6 +15,9 @@ Future Implimations:
 APIs used:          
                     - mapbox API, @material-ui API
 
+Description:        
+                    -This is a full stack project, with selfmade API and CRUD operations that stores attractions friends would like to visit using ReactJS for the frontend. Spring and MySQL for the backend.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
