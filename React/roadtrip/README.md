@@ -1,6 +1,7 @@
 # Roadtrip - A new way to plan a trip
 
-Purpose: To come up with a better way to plan a trip. To make sure you don't miss anything on your next vacation.
+Purpose: 
+                    - To come up with a better way to plan a trip. To make sure you don't miss anything on your next vacation.
 
 User Experience:    
                     - Instantly jump into our map and place markers by double-clicking. Remove markers that are not of interest to you.
