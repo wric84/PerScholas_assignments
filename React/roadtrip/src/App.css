@@ -129,9 +129,9 @@ input, select, textarea{
 body {
   text-align: center;
 }
-form {
+/* form {
   display: inline-block;
-}
+} */
 
 .btn{
   color: cyan;
